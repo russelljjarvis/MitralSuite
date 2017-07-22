@@ -5,7 +5,9 @@ import matplotlib.pyplot as g
 import pickle, os, neuronunit.neuroelectro
 
 from ipywidgets import interact
-#from neuronunit.neuron.models import *
+from neuronunit.neuron.models import *
+
+
 from neuronunit.models import backends
 from neuronunit.tests import *
 from quantities import nA, pA, s, ms, mV, ohm
@@ -31,14 +33,38 @@ def createModel(name, path, getSectionScript):
     # Run custom steps to get the target cell
     soma = getSectionScript(h)
     
-    # Create NeuronUnit model
-    mod1 = SingleCellModel(hVar = h, \
-                       section = soma, \
-                       loc = 0.5, # Current and voltage injection and measurement location on the section \
-                       name = name)
 
+    # Create NeuronUnit model
+
+    from neuronunit.models import backends
+    from neuronunit.models.reduced import ReducedModel
+    import quantities as pq
+    import numpy as np
+    #new_file_path = str(get_neab.LEMS_MODEL_PATH)+str(os.getpid())
+    
+
+    mod0 = ReducedModel( .... ,backend='NEURON')
+    mod0.load_model()
+     
+
+    mod1 = SingleCellModel(hVar = h, \
+                           section = soma, \
+                           loc = 0.5, # Current and voltage injection and measurement location on the section \
+                           name = "SimpleHHCellModel")
     mod1.setTimeStep(1/32.0 * ms)
     mod1.setStopTime(2*s)
+    
+    mod2 = ReducedModel( .... ,backend='NEURON')
+    mod2.load_model()
+    
+    mod3 = neuronunit.neuron.models.SingleCellModel(NeuronModel, \
+                                    HasSegment, \
+                                    ProducesMembranePotential, \
+                                    ReceivesSquareCurrent, \
+                                    ProducesActionPotentials, \
+                                    ProducesSpikes)
+
+    
     
     return mod1
 
