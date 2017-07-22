@@ -1,3 +1,6 @@
+
+import matplotlib 
+matplotlib.use('agg')
 import matplotlib.pyplot as g
 import pickle, os, neuronunit.neuroelectro
 
