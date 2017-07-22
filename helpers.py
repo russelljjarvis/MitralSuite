@@ -5,7 +5,8 @@ import matplotlib.pyplot as g
 import pickle, os, neuronunit.neuroelectro
 
 from ipywidgets import interact
-from neuronunit.neuron.models import *
+#from neuronunit.neuron.models import *
+from neuronunit.models import backends
 from neuronunit.tests import *
 from quantities import nA, pA, s, ms, mV, ohm
 
