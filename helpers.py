@@ -5,7 +5,9 @@ import matplotlib.pyplot as g
 import pickle, os, neuronunit.neuroelectro
 
 from ipywidgets import interact
-from neuronunit.neuron.models import *
+from neuronunit.neuron.models import * 
+
+#This imports the class NeuronModel which is analogous to ReducedModel with NEURON as a backend.
 
 
 from neuronunit.models import backends
